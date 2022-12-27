@@ -36,7 +36,11 @@ class MainActivity : AppCompatActivity() {
             viewModel = mainViewModel
         }
         
-        val gameAdapter = GameListAdapter(mainViewModel.state, this)
+        val gameAdapter = GameListAdapter(mainViewModel.state, this).apply{
+            mergeGames = { dropped, target ->
+                mainViewModel.mergeGame(dropped, target)
+            }
+        }
         binder!!.rvGamesList.apply{
             (layoutManager as GridLayoutManager).apply {
                 spanCount = if (isTablet()) 5 else 3
