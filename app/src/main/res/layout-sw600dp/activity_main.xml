@@ -9,7 +9,7 @@
             name="viewModel"
             type="il.co.procyonapps.tinyapp.ui.MainViewModel" />
 
-        <import type="il.co.procyonapps.tinyapp.ui.MainViewModel.State" />
+        <import type="il.co.procyonapps.tinyapp.ui.MainViewModel.State"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +21,6 @@
             android:id="@+id/ml_state_selector"
             android:layout_width="0dp"
             android:layout_height="0dp"
-
             app:layoutDescription="@xml/switch_transition"
             app:layout_constraintBottom_toTopOf="@id/lt_trash"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,104 +30,73 @@
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:id="@+id/iv_play_mode"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/child_playing_game"
-                app:layout_constraintBottom_toTopOf="@id/tv_play_mode"
                 app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toStartOf="@id/guideline2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="spread_inside" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_play_mode"
                 style="@style/TextAppearance.AppCompat.Display1"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autoSizeMaxTextSize="28sp"
-                android:autoSizeTextType="uniform"
                 android:gravity="center_horizontal"
-                android:lines="1"
                 android:text="Play"
 
-                app:layout_constraintBottom_toTopOf="@id/iv_order_mode"
-                app:layout_constraintEnd_toStartOf="@id/guideline2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_play_mode"
-                app:layout_constraintVertical_bias="0.0"
-
-                />
+                app:layout_constraintTop_toBottomOf="@id/iv_play_mode" />
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:id="@+id/iv_order_mode"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/child_putting_away"
                 app:layout_constraintBottom_toTopOf="@id/tv_order_mode"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toStartOf="@id/guideline2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_play_mode"
-                app:layout_constraintVertical_bias="1" />
+                app:layout_constraintDimensionRatio="1:1" />
 
             <TextView
                 android:id="@+id/tv_order_mode"
                 style="@style/TextAppearance.AppCompat.Display1"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autoSizeMaxTextSize="28sp"
-                android:autoSizeTextType="uniform"
                 android:gravity="center_horizontal"
-                android:lines="1"
                 android:text="Order"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/guideline2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_order_mode" />
+                app:layout_constraintBottom_toBottomOf="parent" />
 
             <ImageView
                 android:id="@+id/switch_background"
-                android:layout_width="50dp"
+                android:layout_width="80dp"
                 android:layout_height="0dp"
-                android:layout_marginHorizontal="32dp"
                 android:layout_marginVertical="8dp"
                 android:src="@drawable/switch_background"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/iv_order_mode"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/guideline2"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_play_mode" />
 
             <ImageView
                 android:id="@+id/switch_button"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="4dp"
                 android:src="@drawable/switch_button"
                 app:layout_constraintEnd_toEndOf="@id/switch_background"
                 app:layout_constraintStart_toStartOf="@id/switch_background"
                 app:layout_constraintTop_toTopOf="@id/switch_background" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
-
         </androidx.constraintlayout.motion.widget.MotionLayout>
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lt_trash"
-            setState="@{viewModel.state}"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline"
+            setState="@{viewModel.state}"
 
             app:lottie_fileName="lottie_trash_can.json" />
 
@@ -146,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.76" />
+            app:layout_constraintGuide_percent="0.88" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

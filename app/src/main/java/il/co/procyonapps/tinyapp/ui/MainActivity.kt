@@ -19,6 +19,7 @@ import androidx.draganddrop.DropHelper
 import androidx.recyclerview.widget.GridLayoutManager
 import il.co.procyonapps.tinyapp.R
 import il.co.procyonapps.tinyapp.databinding.ActivityMainBinding
+import il.co.procyonapps.tinyapp.utils.isTablet
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val gameAdapter = GameListAdapter(mainViewModel.state, this)
         binder!!.rvGamesList.apply{
             (layoutManager as GridLayoutManager).apply {
-                spanCount = 5
+                spanCount = if (isTablet()) 5 else 3
             }
             adapter = gameAdapter
         }
