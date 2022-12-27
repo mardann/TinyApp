@@ -105,6 +105,8 @@ class GameListAdapter(val state: LiveData<MainViewModel.State>, val lifecycle: L
             }
         }
         
+        holder.itemView.foreground = null
+        
         holder.itemView.setOnDragListener{ v, event ->
     
             when(event.action){
