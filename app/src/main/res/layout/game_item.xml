@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="il.co.procyonapps.tinyapp.ui.MainViewModel.State"/>
+        <variable
+            name="state"
+            type="androidx.lifecycle.LiveData&lt;il.co.procyonapps.tinyapp.ui.MainViewModel.State>" />
+        <variable
+            name="game"
+            type="il.co.procyonapps.tinyapp.models.GamesItems.Game" />
+        <variable
+            name="progress"
+            type="androidx.lifecycle.LiveData&lt;Integer>" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="16dp"
+        app:cardPreventCornerOverlap="true"
+        setLoadingProgress="@{progress}">
+
+        <ImageView
+            setImageUrl="@{game.imageUrl}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:alpha="@{state == State.ORDER ? 0.4f : 1.0f}"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/cell_gradient"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeMaxTextSize="24sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:padding="4dp"
+                android:text="@{game.name}"
+                android:textColor="@color/white"
+                tools:text="a game about cool" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{game.author}"
+                android:textColor="@color/white"
+                tools:text="@tools:sample/full_names" />
+
+
+        </LinearLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_gravity="top|center_horizontal"
+            app:lottie_autoPlay="true"
+            setIsGone="@{state == State.PLAY}"
+            app:lottie_fileName="lottie_eyes_2.json"
+            app:lottie_loop="true" />
+
+        <ImageView
+            setIsGone="@{state == State.PLAY}"
+            android:layout_width="126dp"
+            android:layout_height="114dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:alpha="0.85"
+            android:src="@drawable/pointing_hands_2" />
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Transition app:constraintSetStart="@id/play"
+        app:constraintSetEnd="@id/order"
+        app:motionInterpolator="easeIn"
+        app:duration="300"
+        >
+<!--        <OnSwipe-->
+<!--            app:touchAnchorId="@drawable/switch_button"-->
+<!--            app:touchAnchorSide="bottom"-->
+<!--            app:dragDirection="dragDown"-->
+<!--            />-->
+
+        <OnClick app:targetId="@id/switch_button" app:clickAction="toggle"/>
+
+    </Transition>
+    <ConstraintSet android:id="@+id/play">
+        <Constraint android:id="@id/switch_button">
+            <Layout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/switch_background"
+                app:layout_constraintEnd_toEndOf="@id/switch_background"
+                app:layout_constraintTop_toTopOf="@+id/switch_background"/>
+        </Constraint>
+
+        <Constraint android:id="@id/iv_play_mode">
+            <CustomAttribute
+                app:attributeName="Saturation"
+                app:customFloatValue="1" />
+        </Constraint>
+
+        <Constraint android:id="@id/iv_order_mode">
+            <CustomAttribute
+                app:attributeName="Saturation"
+                app:customFloatValue="0" />
+        </Constraint>
+
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/order">
+        <Constraint android:id="@id/switch_button"
+            >
+            <Layout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/switch_background"
+                app:layout_constraintEnd_toEndOf="@id/switch_background"
+                app:layout_constraintBottom_toBottomOf="@id/switch_background"/>
+        </Constraint>
+
+        <Constraint android:id="@id/iv_play_mode">
+            <CustomAttribute
+                app:attributeName="Saturation"
+                app:customFloatValue="0" />
+        </Constraint>
+
+        <Constraint android:id="@id/iv_order_mode">
+            <CustomAttribute
+                app:attributeName="Saturation"
+                app:customFloatValue="1" />
+        </Constraint>
+    </ConstraintSet>
+
+</MotionScene>
